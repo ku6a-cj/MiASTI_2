@@ -5,10 +5,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    tools:ignore="ExtraText">
+    tools:ignore="ExtraText"
+    android:background="@color/material_dynamic_neutral_variant90">
 
 
-        <ImageButton
+    <Button
+        android:id="@+id/buttonPc2ProportiesSave"
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@null"
+        android:text="Save Proporties"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ipsecPC2" />
+
+    <ImageButton
             android:id="@+id/Pc1"
             android:layout_width="171dp"
             android:layout_height="204dp"
@@ -28,6 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pc 1 Proporties"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.694"
@@ -43,7 +58,8 @@
         android:layout_alignParentEnd="true"
         android:ems="10"
         android:inputType="phone"
-        android:text="Ip Adress"
+        android:hint="Ip Adress"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.931"
@@ -66,7 +82,7 @@
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/pc" />
 
-    <ImageView
+    <ImageButton
         android:id="@+id/Rj45_2"
         android:layout_width="174dp"
         android:layout_height="152dp"
@@ -102,7 +118,8 @@
         android:layout_height="42dp"
         android:ems="10"
         android:inputType="phone"
-        android:text="Ip Adress"
+        android:hint="Ip Adress"
+        android:textColorHint="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.931"
@@ -115,16 +132,77 @@
         android:layout_width="120dp"
         android:layout_height="24dp"
         android:text="Pc 2 Proporties"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.749"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" /><![CDATA[
+        app:layout_constraintVertical_bias="0.581" />
 
-    >
+    <EditText
+        android:id="@+id/PortPc1Id"
+        android:layout_width="177dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="Id port"
+        android:textColorHint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.931"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pc1_IP" />
 
+    <EditText
+        android:id="@+id/PortPc2Id"
+        android:layout_width="178dp"
+        android:layout_height="47dp"
+        android:ems="10"
+        android:inputType="phone"
+        android:hint="Id port"
+        android:textColorHint="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.935"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pc2_IP"
+        app:layout_constraintVertical_bias="0.057" />
 
+    <Switch
+        android:id="@+id/ipsecPC1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Ipsec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PortPc1Id" />
 
-]]>
+    <Switch
+        android:id="@+id/ipsecPC2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Ipsec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.658"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PortPc2Id"
+        />
+
+    <Button
+        android:id="@+id/buttonPc1ProportiesSave"
+        android:layout_width="154dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_button"
+        android:backgroundTint="@null"
+        android:text="Save Proporties"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.848"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ipsecPC1" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
