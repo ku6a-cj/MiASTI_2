@@ -1,13 +1,13 @@
+@file:Suppress("LocalVariableName")
+
 package com.example.miasti_2
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import java.net.InetAddress
 import java.util.regex.Pattern
 
 
@@ -44,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         val Pc2_Ipsec = findViewById<Switch>(R.id.ipsecPC2)
         val Pc1_saveProporties = findViewById<Button>(R.id.buttonPc1ProportiesSave)
         val Pc2_saveProporties = findViewById<Button>(R.id.buttonPc2ProportiesSave)
+        val sendButton = findViewById<Button>(R.id.sendButton)
         val animation: Animation = AlphaAnimation(1.0f, 0.0f)
         //animation time of disappearing button after selecting it
         animation.duration = 1000
@@ -56,19 +57,23 @@ class MainActivity : AppCompatActivity() {
         var Pc1Ipsec = false
         var Pc2Ipsec = false
 
-        Pc1_Ipsec?.setOnCheckedChangeListener({ _ , isChecked ->
+        Pc1_Ipsec?.setOnCheckedChangeListener { _, isChecked ->
             val message = if (isChecked) "IpsecPc1:ON" else "IpsecPc2:OFF"
-            Pc1Ipsec = if (isChecked) true else false
-            Toast.makeText(this@MainActivity, message,
-                Toast.LENGTH_SHORT).show()
-        })
+            Pc1Ipsec = isChecked
+            Toast.makeText(
+                this@MainActivity, message,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
-        Pc2_Ipsec?.setOnCheckedChangeListener({ _ , isChecked ->
+        Pc2_Ipsec?.setOnCheckedChangeListener { _, isChecked ->
             val message = if (isChecked) "IpsecPc1:ON" else "IpsecPc2:OFF"
-            Pc2Ipsec = if (isChecked) true else false
-            Toast.makeText(this@MainActivity, message,
-                Toast.LENGTH_SHORT).show()
-        })
+            Pc2Ipsec = isChecked
+            Toast.makeText(
+                this@MainActivity, message,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
 
         Pc1_saveProporties.setOnClickListener{
             Pc1_saveProporties.startAnimation(animation)
@@ -85,10 +90,10 @@ class MainActivity : AppCompatActivity() {
         Pc1.setOnClickListener{
             if(isValidIPAddress(Pc1Ip))
             {
-                Toast.makeText(this@MainActivity,"Ip PC1 ="+ Pc1Ip.toString() +"Port Pc1 = "+ Pc1Port,
+                Toast.makeText(this@MainActivity,"Ip PC1 ="+ Pc1Ip +"Port Pc1 = "+ Pc1Port,
                     Toast.LENGTH_LONG).show()
             }else{
-                Toast.makeText(this@MainActivity,"Bad ip adress",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity,"Bad ip address",Toast.LENGTH_LONG).show()
             }
 
         }
@@ -100,7 +105,7 @@ class MainActivity : AppCompatActivity() {
                     Toast.LENGTH_LONG
                 ).show()
             }else {
-                Toast.makeText(this@MainActivity,"Bad ip adress",Toast.LENGTH_LONG).show()
+                Toast.makeText(this@MainActivity,"Bad ip address",Toast.LENGTH_LONG).show()
             }
         }
 
