@@ -44,7 +44,10 @@ class MainActivity : AppCompatActivity() {
         })
 
         Pc1_saveProporties.setOnClickListener{
-            Pc1Ip = Pc1_Ip.toString()
+            if(Pc1_Ip.toString().length>3){
+                Pc1Ip = Pc1_Ip.toString()
+            }
+
             Pc1Port = Pc1_PortId.toString()
         }
 
@@ -54,10 +57,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         Pc1.setOnClickListener{
-            Toast.makeText(this@MainActivity,"Ip PC1 ="+ Pc1Ip+"Port Pc1 = "+Pc1Port,
+            Toast.makeText(this@MainActivity,"Ip PC1 ="+ Pc1Ip.toString()+"Port Pc1 = "+Pc1Port.toString(),
                 Toast.LENGTH_LONG).show()
         }
 
+        Pc2.setOnClickListener{
+            Toast.makeText(this@MainActivity,"Ip PC2 ="+ Pc2Ip.toString()+"Port Pc2 = "+Pc2Port.toString(),
+                Toast.LENGTH_LONG).show()
+        }
 
 
     }
