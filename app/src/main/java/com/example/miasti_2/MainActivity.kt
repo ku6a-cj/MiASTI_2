@@ -94,7 +94,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         Pc2.setOnClickListener{
-            if(isValidIPAddress(Pc1Ip)) {
+            if(isValidIPAddress(Pc2Ip)) {
                 Toast.makeText(
                     this@MainActivity, "Ip PC2 =" + Pc2Ip + "Port Pc2 = " + Pc2Port,
                     Toast.LENGTH_LONG
