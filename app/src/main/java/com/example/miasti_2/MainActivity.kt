@@ -3,11 +3,18 @@
 package com.example.miasti_2
 
 import android.annotation.SuppressLint
+import android.media.Image
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.util.regex.Pattern
 
 
@@ -31,7 +38,9 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
+        val envelope = findViewById<ImageView>(R.id.post)
+        val envelope2 = findViewById<ImageView>(R.id.post2)
+        val envelope3 = findViewById<ImageView>(R.id.post3)
         val Pc1 = findViewById<ImageButton>(R.id.Pc1)
         val Pc2 = findViewById<ImageButton>(R.id.Pc2)
         var Rj45_1 = findViewById<ImageButton>(R.id.Rj45_1)
@@ -49,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         //animation time of disappearing button after selecting it
         animation.duration = 1000
 
+        envelope.visibility = View.INVISIBLE
+        envelope2.visibility = View.INVISIBLE
+        envelope3.visibility = View.INVISIBLE
 
         var Pc1Ip = "0.0.0.0"
         var Pc2Ip = "0.0.0.0"
@@ -109,6 +121,62 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        sendButton.setOnClickListener{
+            if(Pc1Ip==Pc2Ip){
+                Toast.makeText(this@MainActivity,"Ip address of Pc1 and Pc2 are the same",Toast.LENGTH_LONG).show()
+            }else{
+            if(Pc1Port!=Pc2Port){
+                Toast.makeText(this@MainActivity,"Ports need to have the same value",Toast.LENGTH_LONG).show()
+            }else{
+                Toast.makeText(this@MainActivity,"Sending message",Toast.LENGTH_LONG).show()
+
+
+                GlobalScope.launch(Dispatchers.Main) {
+                    println("Thread woke up after 1 second")
+                    envelope.visibility = View.VISIBLE
+                    delay(2000)
+                    Log.e("error","1")
+                    envelope.visibility = View.INVISIBLE
+                    envelope2.visibility = View.VISIBLE
+                    delay(2000)
+                    envelope2.visibility = View.INVISIBLE
+                    Log.e("error","2")
+                    envelope3.visibility = View.VISIBLE
+                    delay(2000)
+                    envelope3.visibility = View.INVISIBLE
+                }
+
+                if(Pc1Ipsec == true && Pc2Ipsec == true){
+                    Toast.makeText(this@MainActivity,"Connection Successful",Toast.LENGTH_LONG).show()
+
+                    GlobalScope.launch(Dispatchers.Main) {
+                        println("Thread woke up after 1 second")
+                        envelope3.visibility = View.VISIBLE
+                        delay(2000)
+                        Log.e("error","1")
+                        envelope3.visibility = View.INVISIBLE
+                        envelope2.visibility = View.VISIBLE
+                        delay(2000)
+                        envelope2.visibility = View.INVISIBLE
+                        Log.e("error","2")
+                        envelope.visibility = View.VISIBLE
+                        delay(2000)
+                        envelope.visibility = View.INVISIBLE
+                    }
+
+                    Toast.makeText(this@MainActivity,"Message receive",Toast.LENGTH_LONG).show()
+
+                }else{
+                    Toast.makeText(this@MainActivity,"Ipsec error",Toast.LENGTH_LONG).show()
+                }
+            }
+
+            }
+        }
+
+
 
     }
 }
+
+

@@ -9,6 +9,34 @@
     android:background="@color/material_dynamic_neutral_variant90">
 
 
+    <ImageView
+        android:id="@+id/post3"
+        android:layout_width="65dp"
+        android:layout_height="53dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.752"
+        app:srcCompat="@drawable/pngegg" />
+
+    <ImageView
+        android:id="@+id/post2"
+        android:layout_width="65dp"
+        android:layout_height="53dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.532"
+        app:srcCompat="@drawable/pngegg" />
+
     <Button
         android:id="@+id/buttonPc2ProportiesSave"
         android:layout_width="154dp"
@@ -218,5 +246,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.458" />
+
+    <ImageView
+        android:id="@+id/post"
+        android:layout_width="65dp"
+        android:layout_height="53dp"
+        android:background="@android:color/transparent"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.32"
+        app:srcCompat="@drawable/pngegg" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
