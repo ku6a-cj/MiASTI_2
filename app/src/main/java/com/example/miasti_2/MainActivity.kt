@@ -122,56 +122,63 @@ class MainActivity : AppCompatActivity() {
         }
 
         sendButton.setOnClickListener{
-            if(Pc1Ip==Pc2Ip){
-                Toast.makeText(this@MainActivity,"Ip address of Pc1 and Pc2 are the same",Toast.LENGTH_LONG).show()
-            }else{
-            if(Pc1Port!=Pc2Port){
-                Toast.makeText(this@MainActivity,"Ports need to have the same value",Toast.LENGTH_LONG).show()
-            }else{
-                Toast.makeText(this@MainActivity,"Sending message",Toast.LENGTH_LONG).show()
+            if (isValidIPAddress(Pc1Ip) && isValidIPAddress(Pc2Ip)){
+
+                if(Pc1Ip==Pc2Ip){
+                    Toast.makeText(this@MainActivity,"Ip address of Pc1 and Pc2 are the same",Toast.LENGTH_LONG).show()
+                }else{
+                    if(Pc1Port!=Pc2Port){
+                        Toast.makeText(this@MainActivity,"Ports need to have the same value",Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(this@MainActivity,"Sending message",Toast.LENGTH_LONG).show()
 
 
-                GlobalScope.launch(Dispatchers.Main) {
-                    println("Thread woke up after 1 second")
-                    envelope.visibility = View.VISIBLE
-                    delay(2000)
-                    Log.e("error","1")
-                    envelope.visibility = View.INVISIBLE
-                    envelope2.visibility = View.VISIBLE
-                    delay(2000)
-                    envelope2.visibility = View.INVISIBLE
-                    Log.e("error","2")
-                    envelope3.visibility = View.VISIBLE
-                    delay(2000)
-                    envelope3.visibility = View.INVISIBLE
-                }
+                        GlobalScope.launch(Dispatchers.Main) {
+                            println("Thread woke up after 1 second")
+                            envelope.visibility = View.VISIBLE
+                            delay(2000)
+                            Log.e("error","1")
+                            envelope.visibility = View.INVISIBLE
+                            envelope2.visibility = View.VISIBLE
+                            delay(2000)
+                            envelope2.visibility = View.INVISIBLE
+                            Log.e("error","2")
+                            envelope3.visibility = View.VISIBLE
+                            delay(2000)
+                            envelope3.visibility = View.INVISIBLE
+                        }
 
-                if(Pc1Ipsec == true && Pc2Ipsec == true){
-                    Toast.makeText(this@MainActivity,"Connection Successful",Toast.LENGTH_LONG).show()
+                        if(Pc1Ipsec == true && Pc2Ipsec == true){
+                            Toast.makeText(this@MainActivity,"Connection Successful",Toast.LENGTH_LONG).show()
 
-                    GlobalScope.launch(Dispatchers.Main) {
-                        println("Thread woke up after 1 second")
-                        envelope3.visibility = View.VISIBLE
-                        delay(2000)
-                        Log.e("error","1")
-                        envelope3.visibility = View.INVISIBLE
-                        envelope2.visibility = View.VISIBLE
-                        delay(2000)
-                        envelope2.visibility = View.INVISIBLE
-                        Log.e("error","2")
-                        envelope.visibility = View.VISIBLE
-                        delay(2000)
-                        envelope.visibility = View.INVISIBLE
+                            GlobalScope.launch(Dispatchers.Main) {
+                                delay(8000)
+                                println("Thread woke up after 1 second")
+                                envelope3.visibility = View.VISIBLE
+                                delay(2000)
+                                Log.e("error","1")
+                                envelope3.visibility = View.INVISIBLE
+                                envelope2.visibility = View.VISIBLE
+                                delay(2000)
+                                envelope2.visibility = View.INVISIBLE
+                                Log.e("error","2")
+                                envelope.visibility = View.VISIBLE
+                                delay(2000)
+                                envelope.visibility = View.INVISIBLE
+                            }
+
+                            Toast.makeText(this@MainActivity,"Message receive",Toast.LENGTH_LONG).show()
+
+                        }else{
+                            Toast.makeText(this@MainActivity,"Ipsec error",Toast.LENGTH_LONG).show()
+                        }
                     }
 
-                    Toast.makeText(this@MainActivity,"Message receive",Toast.LENGTH_LONG).show()
-
-                }else{
-                    Toast.makeText(this@MainActivity,"Ipsec error",Toast.LENGTH_LONG).show()
                 }
+            }else{
+                Toast.makeText(this@MainActivity,"Ip validation failed",Toast.LENGTH_LONG).show()
             }
 
-            }
         }
 
 
