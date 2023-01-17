@@ -3,6 +3,7 @@
 package com.example.miasti_2
 
 import android.annotation.SuppressLint
+import android.content.DialogInterface
 import android.media.Image
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import android.view.View
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -68,6 +70,7 @@ class MainActivity : AppCompatActivity() {
         var Pc2Port = "0000"
         var Pc1Ipsec = false
         var Pc2Ipsec = false
+
 
         Pc1_Ipsec?.setOnCheckedChangeListener { _, isChecked ->
             val message = if (isChecked) "IpsecPc1:ON" else "IpsecPc2:OFF"
@@ -165,7 +168,26 @@ class MainActivity : AppCompatActivity() {
                                 envelope.visibility = View.VISIBLE
                                 delay(2000)
                                 envelope.visibility = View.INVISIBLE
+
+
+                                val dialogBuilder = AlertDialog.Builder(this@MainActivity)
+
+                                // set message of alert dialog
+                                dialogBuilder.setMessage("Message delivered successfully")
+                                    // if the dialog is cancelable
+                                    .setCancelable(false)
+                                    .setNegativeButton("OK", DialogInterface.OnClickListener {
+                                            dialog, id -> dialog.cancel()
+                                    })
+
+                                // create dialog box
+                                val alert = dialogBuilder.create()
+                                // set title for alert dialog box
+                                alert.setTitle("Message Information")
+                                // show alert dialog
+                                alert.show()
                             }
+
 
                             Toast.makeText(this@MainActivity,"Message receive",Toast.LENGTH_LONG).show()
 
